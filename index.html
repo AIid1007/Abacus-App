@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#1c1f26">
+<title>Bead Dojo — Anzan Training</title>
+<link rel="manifest" href="manifest.json">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Work+Sans:wght@400;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="app">
+
+  <!-- PROFILE SELECT -->
+  <section id="screen-profiles" class="screen active">
+    <div class="brand">
+      <div class="brand-mark">算</div>
+      <h1>Bead Dojo</h1>
+      <p class="brand-sub">anzan training · the beads become the mind</p>
+    </div>
+    <div class="profile-cards" id="profile-cards"></div>
+    <p class="tiny-note">Progress is saved on this device. Use Export in the dojo to back up.</p>
+  </section>
+
+  <!-- HOME / DOJO -->
+  <section id="screen-home" class="screen">
+    <header class="dojo-header">
+      <div>
+        <div class="belt-title" id="belt-title">White Belt</div>
+        <div class="belt-sub" id="belt-sub">0 solved · day streak 0</div>
+      </div>
+      <div class="header-right">
+        <button class="icon-btn" id="btn-sound" title="sound">♪</button>
+        <button class="icon-btn" id="btn-switch" title="switch player">⇄</button>
+      </div>
+    </header>
+
+    <div class="journey" id="journey"></div>
+
+    <div class="sensei-box" id="sensei-box"></div>
+
+    <div class="daily-card" id="daily-card">
+      <div class="daily-label">TODAY'S TRAINING</div>
+      <div class="daily-rounds" id="daily-rounds"></div>
+      <button class="primary-btn" id="btn-train">Begin training</button>
+      <div class="shield-row" id="shield-row"></div>
+    </div>
+
+    <div class="modes-grid" id="modes-grid">
+      <button class="mode-btn locked" data-mode="survival"><span class="mode-name">Survival</span><span class="mode-desc">faster & faster until you fall</span></button>
+      <button class="mode-btn locked" data-mode="timeattack"><span class="mode-name">Time Attack</span><span class="mode-desc">60 seconds, max solves</span></button>
+      <button class="mode-btn locked" data-mode="operations"><span class="mode-name">Operations</span><span class="mode-desc">minus & times join the fight</span></button>
+      <button class="mode-btn locked" data-mode="zen"><span class="mode-name">Zen</span><span class="mode-desc">no timer, only beads</span></button>
+    </div>
+    <div class="modes-lock-note" id="modes-lock-note">Finish today's training to open the dojo floor.</div>
+
+    <div class="growth" id="growth">
+      <div class="growth-label">GROWTH MIRROR</div>
+      <canvas id="sparkline" width="400" height="60"></canvas>
+      <div class="growth-line" id="growth-line">Train today to begin your record.</div>
+      <div class="growth-tip" id="growth-tip"></div>
+    </div>
+
+    <div class="footer-tools">
+      <button class="ghost-btn" id="btn-export">Export save</button>
+      <button class="ghost-btn" id="btn-import">Import save</button>
+      <input type="file" id="import-file" accept=".json" hidden>
+    </div>
+  </section>
+
+  <!-- PLAY -->
+  <section id="screen-play" class="screen">
+    <div class="play-top">
+      <button class="icon-btn" id="btn-quit">✕</button>
+      <div class="play-status" id="play-status"></div>
+    </div>
+    <div class="stage" id="stage">
+      <div id="stage-content"></div>
+    </div>
+    <div class="answer-zone" id="answer-zone">
+      <input type="text" inputmode="numeric" pattern="[0-9-]*" class="answer-input" id="answer-input" autocomplete="off">
+      <button class="primary-btn" id="btn-submit">Go</button>
+    </div>
+    <div class="numpad" id="numpad"></div>
+  </section>
+
+</div>
+<script src="js/state.js"></script>
+<script src="js/sensei.js"></script>
+<script src="js/engine.js"></script>
+<script src="js/ui.js"></script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(()=>{}));
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "name": "Bead Dojo — Anzan Training",
+  "short_name": "Bead Dojo",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#1c1f26",
+  "theme_color": "#1c1f26",
+  "description": "Daily flash-anzan training. The beads become the mind.",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
